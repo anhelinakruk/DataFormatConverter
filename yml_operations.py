@@ -16,3 +16,24 @@ def load_yaml(file_path):
     except Exception as e:
         print(f"Error with loading YAML: {e}")
         return None
+    
+def save_yaml(data, file_path):
+    """Save data to a YAML file"""
+    try:
+        if not os.path.exists(file_path):
+            directory = os.path.dirname(file_path)
+            if directory:
+                os.makedirs(directory, exist_ok=True)
+            else:
+                file_path = os.path.join(os.getcwd(), file_path)
+                directory = os.path.dirname(file_path)
+                os.makedirs(directory, exist_ok=True)
+            with open(file_path, 'w') as file:
+                file.write('')
+            print(f"Created new YAML file: {file_path}")
+
+        with open(file_path, 'w') as file:
+            yaml.dump(data, file, default_flow_style=False)
+        print("Data saved to YAML file successfully.")
+    except Exception as e:
+        print(f"Error with saving data to YAML file: {e}")

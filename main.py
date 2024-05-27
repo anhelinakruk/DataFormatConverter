@@ -1,6 +1,6 @@
 import argparse
 from json_operations import load_json, save_json
-from yml_operations import load_yaml
+from yml_operations import load_yaml, save_yaml
 
 def parse_arguments():
     parser = argparse.ArgumentParser(description="Program for data conversion supporting .xml, .json, and .yml (.yaml) formats")
@@ -28,6 +28,8 @@ def main():
     
     if output_file.lower().endswith('.json'):
         save_json(data, output_file)
+    elif output_file.lower().endswith('.yaml') or output_file.lower().endswith('.yml'):
+        save_yaml(data, output_file)
     else:
         print("Unsupported file format. Currently, only .json, .yaml/.yml formats.")
         return
