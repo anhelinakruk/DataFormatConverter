@@ -25,7 +25,7 @@ jobs:
               shell: bash
             
             - name: Build executable
-              run: pyinstaller --onefile --noconsole main.py
+              run: pyinstaller --onefile --noconsole src/main.py
             
             - name: Upload artifact
               uses: actions/upload-artifact@v2
